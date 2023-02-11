@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "AddRoleToUser";
+    Layout = "~/Areas/Admin/Shared/AdminLayout.cshtml";
+}
+@model UserRoleViewModel
+<h2> Kullanıcıya yetki atama </h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <form asp-controller="Role" asp-action="AddRoleToUser" method="post">
+
+                <thead>
+                    <tr>
+
+                        <label>Kullanıclar</label>
+                        <label>Roles</label>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <select class="form-select" asp-for="UserId" asp-items="@(ViewBag.Users)">
+                  
+
+                    </select>
+                    <select class="form-select" asp-for="RoleName" asp-items="@(ViewBag.Roles)">
+                      
+
+                    </select>
+
+                </tbody>
+
+                <button type="submit">Kaydet</button>
+
+
+                </form>
+
+            </table>
+        </div>
+    </div>
+
+
+</div>

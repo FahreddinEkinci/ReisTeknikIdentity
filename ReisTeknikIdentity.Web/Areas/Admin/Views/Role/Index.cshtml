@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Shared/AdminLayout.cshtml";
+
+    var successMessage = TempData["success"] as string;
+}
+@model IEnumerable<RoleViewModel>
+
+
+<div class="container-fluid bg-white">
+
+        <a asp-area="Admin" asp-controller="Role" asp-action="Create" class="btn btn-success btn-sm">Yetki Grubu Ekle</a>
+        <a asp-area="Admin" asp-controller="Role" asp-action="AddRoleToUser" class="btn btn-success btn-sm">Kullanıcıya yetki ata</a>
+    <div class="row">
+        <div class="col-md-6  col-sm-12">
+            <div class="row">
+
+                <div class="col-md-6 offset-md-3">
+                    <table class="table table-bordered hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Yetki Grubu</th>
+                                <th>Aksiyon</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="table-item">
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <a class="btn btn-info" asp-action="Update" asp-route-id="@item.Id"> Değiştir</a>
+                                    </td>
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

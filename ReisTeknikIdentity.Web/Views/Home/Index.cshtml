@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa - Tüm Ürünler";
+
+    string successMessage = TempData["success"] as string;
+}
+
+@model IEnumerable<Product>
+
+<partial name="~/Views/PartialView/_SliderPartialView.cshtml" />
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success">
+
+        <p role="role">
+            @successMessage
+        </p>
+    </div>
+}
+
+
+<div class="row mt-3">
+
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <div class="card border">
+                @if (item.Images.Count == 0)
+                {
+                    <img src="/ottoman.png" alt="@(item.Title)" />
+
+                }
+                else
+                {
+
+                    <img class="img-fluid" src="~/ProductImages/@item.Images.FirstOrDefault().Name" alt="@item.Title" style="max-height:240px;" />
+                }
+                <div class="card-body">
+                    <h4 class="card-title display6 text-success text-justify"> @item.Name </h4>
+                    <div class="card-text">
+                        @(item.Description.Length > 110 ? item.Description.Substring(0, 107) + "..." : item.Description)
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    @if (item.Category != null)
+                    {
+                        @item.Category.Name
+                    }
+                    <div class="dropdown-divider"> </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div>
+                            <span class="text-dark">@item.Price ₺</span> <span class="text-decoration-line-through text-muted">@item.Price ₺</span>
+                        </div>
+                        <div>
+                            <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-success btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg> Daha Fazla
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+

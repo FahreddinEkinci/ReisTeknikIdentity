@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReisTeknikIdentity.Web", "ReisTeknikIdentity.Web\ReisTeknikIdentity.Web.csproj", "{D7BFCDC4-4CFF-4F90-828A-B012767050B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7BFCDC4-4CFF-4F90-828A-B012767050B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BFCDC4-4CFF-4F90-828A-B012767050B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BFCDC4-4CFF-4F90-828A-B012767050B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BFCDC4-4CFF-4F90-828A-B012767050B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32674E52-B595-4B74-AF1E-F11BC622570B}
+	EndGlobalSection
+EndGlobal

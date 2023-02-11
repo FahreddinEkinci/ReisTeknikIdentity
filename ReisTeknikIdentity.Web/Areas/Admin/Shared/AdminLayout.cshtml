@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - Reis Teknik Hırdavat</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/AdminAssets/vendors/mdi/css/materialdesignicons.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/AdminAssets/vendors/flag-icon-css/css/flag-icon.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/AdminAssets/vendors/css/vendor.bundle.base.css" asp-append-version="true">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/AdminAssets/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AdminAssets/css/CustomStyle.css" asp-append-version="true" />
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/AdminAssets/images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+
+        <partial name="/areas/admin/shared\themespartial/_NavPartialView.cshtml" />
+
+        <div class="container-fluid page-body-wrapper">
+            <partial name="/Areas/Admin/Shared/ThemesPartial/_SideBarPartialView.cshtml" />
+
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody();
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
+
+                <partial name="/Areas/Admin/Shared/ThemesPartial/_FooterPartialView.cshtml" />
+
+
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+
+    <script src="~/AdminAssets/vendors/js/vendor.bundle.base.js"></script>
+    <!--- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/AdminAssets/js/off-canvas.js"></script>
+    <script src="~/AdminAssets/js/hoverable-collapse.js"></script>
+    <script src="~/AdminAssets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Shared/AdminLayout.cshtml";
+}
+@model RoleViewModel
+
+<h1>Kullanı yetki grubu ekle</h1>
+
+<div class="container bg-white">
+
+    <div class="row">
+        <div class="col-md-6  col-sm-12">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="alert alert danger" asp-validation-summary="ModelOnly">
+                    </div>
+                    <form asp-controller="Role" asp-action="Create" method="post">
+                        <input type="text" class="form-control" placeholder="Yetki grub adını giriniz" asp-for="Name" required="" />
+
+                        <span asp- asp-validation-for="Name"></span>
+                        <input type="submit" value="Kaydet" class="btn btn-success mt-1" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

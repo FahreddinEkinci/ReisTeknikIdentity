@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Fahreddin Ekinci" />
+    <meta name="description" content="reis teknik, hırdavat malzemeleri, kalıp elemanları, elmas pasta satan köklü firmamızdır." />
+    <title>@ViewData["Title"] - Reis Teknik Hırdat</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ReisTeknikIdentity.Web.styles.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("Css", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Reis Teknik</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Gizlilik</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">İletişim</a>
+                        </li>
+                    </ul>
+
+                    @if (User.Identity!.IsAuthenticated)
+                    {
+                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Home" asp-action="UserList">Kullanıcılar</a>
+                        <div class="dropdown m-1">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                @User.Identity.Name
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu me-0" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item active" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Ayarlar</a></li>
+                                <li><a class="dropdown-item" href="#">Dükkan</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-area="" asp-route-returnurl="/Home/Privacy" asp-controller="User" asp-action="SignOut">Çıkış</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                    <a class="btn btn-outline-success" asp-area="" asp-controller="Home" asp-action="SignUp">Kayıt Ol</a>
+                    <a class="btn btn-outline-success" asp-area="" asp-controller="User" asp-action="SignIn">Giriş Yap</a>
+                    }
+                    </div>
+                </div>
+
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <div  class="row">  
+            <div class="col-md-2">
+                @await Component.InvokeAsync("CategoryList")
+            </div>
+        <main role="main" class=" col-md-10 pb-3">
+            @RenderBody()
+        </main>
+         </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - ReisTeknik Hırdavat designeted by Fahreddin Ekinci- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

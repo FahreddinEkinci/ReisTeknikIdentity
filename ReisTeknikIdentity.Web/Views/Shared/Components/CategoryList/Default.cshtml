@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CategoryListComponentViewModel>
+
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width=280px;">
+    <a asp-action="Index" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#"></use></svg>
+        <span class="fs-4">Tüm Ürünler</span>
+    </a>
+
+    <ul class="nav nav-pills flex-column mb-auto hover">
+        @foreach (var item in Model)
+        {
+        <li class="nav-item">
+            <a asp-area="" asp-controller="Home" asp-action="GetProductsByCategory" asp-route-id=@item.Id class="nav-link">@item.Name</a>
+         
+        </li>
+
+        }
+    </ul>
+
+
+    <div class="dropdown-divider"></div>
+
+    @if(User.Identity.IsAuthenticated)
+    {
+
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-player"></i>
+            <strong>İşlemler</strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#">Profil.</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <a class="dropdown-item" asp-controller="User" asp-action="LogOut"> <i class="fa fa-sign-out"></i> Çıkış</a>
+                </li>
+        </ul>
+    </div>
+
+    }
+
+</div>
+
+
+

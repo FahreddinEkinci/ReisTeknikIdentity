@@ -1,0 +1,78 @@
+﻿@section Css{
+
+    @await Html.PartialAsync("~/Views/Shared/_ReflowCss.cshtml")
+
+}
+@model IEnumerable<Product>
+
+<section class="py-5">
+    <div class="container py-5">
+        <!--
+        <div class="row mb-4 mb-lg-5">
+        <div class="col-md-8 col-xl-6 text-center mx-auto">
+        <h2 class="fw-bold">Products</h2>
+        <p class="text-muted">No matter the project, our team can handle it. </p>
+        </div>
+        </div>
+         -->
+        <div class="row mx-auto">
+            <div class="col">
+                <div data-reflow-type="product-list" data-reflow-layout="cards">
+                    <div class="reflow-product-list ref-cards">
+                        <div class="ref-products">
+                            <!--
+                            <div class="ref-product">
+                                <div class="ref-media">
+                                    <img class="ref-image" src="https://cdn.bootstrapstudio.io/products/product-30_md.jpg" loading="lazy" />
+                                    <div class="ref-sale-badge">SALE</div>
+                                </div>
+                                <div class="ref-product-data">
+                                    <div class="ref-product-info">
+                                        <h5 class="ref-name">Piggy Bank</h5>
+                                        <p class="ref-excerpt">Et numquam est vitae.</p>
+                                    </div><strong class="ref-price ref-on-sale"><s class="ref-original-price">$100.00</s>$23.51</strong>
+                                </div>
+                                <div class="ref-addons"><a class="ref-button preview-toggle" href="#">Add to Cart</a></div>
+                            </div>
+
+                            -->
+                            @if (Model != null)
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    <div class="ref-product">
+                                        <div class="ref-media"><img class="ref-image" h src="https://cdn.bootstrapstudio.io/products/product-29_md.jpg" loading="lazy" /></div>
+                                        <div class="ref-product-data">
+                                            <div class="ref-product-info">
+                                                <h5 class="ref-name">@item.Name</h5>
+                                                <p class="ref-excerpt">@item.Description.</p>
+                                            </div><strong class="ref-price">@item.Price ₺</strong>
+                                        </div>
+                                        <div class="ref-addons"><a class="ref-button preview-toggle" href="#">Detay</a></div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">
+                                    <p role="alert">
+
+                                    </p>
+                                    veritabanında ürün yok..!
+                                </div>
+                            }
+
+                        </div>
+                        <div class="ref-product-preview">
+                            <div class="ref-product-preview-header">
+                                <div class="ref-title"></div>
+                                <div class="ref-close-button">×</div>
+                            </div>
+                            <div class="ref-product-preview-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

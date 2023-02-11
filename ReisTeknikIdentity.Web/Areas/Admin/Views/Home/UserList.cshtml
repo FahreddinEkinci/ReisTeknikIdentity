@@ -1,0 +1,88 @@
+﻿@model List<UserViewModel>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Areas/Admin/Shared/AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+
+        <div class="card-body">
+            <div class="col-sm-12 col-md-6">
+                <div class="user-list-files d-flex float-right mb-3">
+                    <a class="btn btn-sm btn-danger" href="javascript:void();">
+                        Yazdır
+                    </a>
+                    <a class="btn btn-sm btn-success mr-1 ml-1" href="javascript:void();">
+                        Excele Aktar
+                    </a>
+                    <a class="btn btn-sm btn-info" href="javascript:void();">
+                        Pdf'e Aktar
+                    </a>
+                </div>
+            </div>
+            <h4 class="card-title">Kullanıcı Listesi</h4>
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th class="d-none">Id</th>
+                        <th>@Html.DisplayNameFor(x=> x.FirstOrDefault().ProfileImageUrl)</th>
+                        <th>@Html.DisplayNameFor(x=> x.FirstOrDefault().UserName)</th>
+                        <th>İletişim</th>
+                        <th>@Html.DisplayNameFor(x=> x.FirstOrDefault().Email)</th>
+
+
+                        <th>Şehir</th>
+                        <th>Durum</th>
+                        <th>Kayıt Tarihi</th>
+                        <th>Aksiyon</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td class="d-none">@user.Id</td>
+                            <td class="text-center"><img class="rounded-circle img-fluid avatar-10 thumb " src="~/ProfileImages/@user.ProfileImageUrl" alt="profile"></td>
+                            <td>@user.UserName</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.Email</td>
+                            <td>İstanbul</td>
+                            <td><span class="">Aktif</span></td>
+
+                        <td>@Html.DisplayFor(x=> user.CreatedAt)</td>
+                            <td>
+                                <div class="flex align-items-center list-user-action">
+                                    <a class="btn btn-secondary btn-sm" asp-action="Edit" asp-route-id="@user.Id">Düzenle</a> 
+                                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@user.Id">Detay</a> 
+                                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@user.Id">Sil</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row justify-content-between mt-3">
+            <div id="user-list-page-info" class="col-md-6">
+                <span>5 kişilik gösterim</span>
+            </div>
+            <div class="col-md-6">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Geri</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">İleri</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

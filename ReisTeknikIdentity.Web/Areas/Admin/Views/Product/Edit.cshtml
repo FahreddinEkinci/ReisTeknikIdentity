@@ -1,0 +1,107 @@
+﻿@model ReisTeknikIdentity.Web.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Shared/AdminLayout.cshtml";
+}
+
+
+<h4>Ürün düzenleme</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+
+                <textarea cols="10" rows="30" id="editDescription" class="form-control ckeditor" asp-for="Description"></textarea>
+
+
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-4 col-md-6 col-6">
+
+        <div class="row text-justify-center text-center pt-3 ">
+            @foreach (var item in Model.Images)
+            {
+                <div class="col-md-4">
+
+                    <img class="img-fluid img-thumbnail" src="~/ProductImages/@item.Name" alt="">
+                    <input class="btn btn-danger btn-sm" type="submit" value="Sil" />
+
+                </div>
+            }
+        </div>
+        <div class="row mt-3">
+            <form asp-action="AddImageToProduct" enctype="multipart/form-data">
+                <div class="col-md-8">
+
+                    <input type="hidden" asp-for="Id" />
+                    <input class="form-control-sm" type="file" asp-for="Files" required="" />
+                </div>
+                <div class="col-md-4">
+
+                    <input class="btn btn-success btn-sm" type="submit" value="Resim Ekle" />
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Listeye dön</a>
+</div>
+
+@section Scripts{
+
+    <script src="~/ckeditor5/ckeditor.min.js">
+
+    </script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editDescription'))
+            .catch(error => {
+                console.error(error);
+            });
+
+    </script>
+
+}

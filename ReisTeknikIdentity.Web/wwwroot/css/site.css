@@ -1,0 +1,89 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+:root {
+    --ref-white: var(--bs-white, var(--white, #fff));
+    --ref-gray-100: var(--bs-gray-100, #f8f9fa);
+    --ref-gray-300: var(--bs-gray-300, #dee2e6);
+    --ref-gray-700: var(--bs-gray-700, #848e97);
+    --ref-gray: var(--bs-gray-600, #b2b8bf);
+    --ref-darkgray: var(--bs-gray-800, #495057);
+    --ref-black: var(--bs-black, var(--black, #000));
+    --ref-primary: var(--bs-primary, var(--primary, #0d6efd));
+    --ref-success: var(--bs-success, var(--success, #20c997));
+    --ref-danger: var(--bs-danger, var(--danger, #ff0051));
+    --ref-warning: var(--bs-warning, var(--warning, #f7e296));
+    --ref-body-color: var(--bs-body-color, #212529);
+    --ref-border-radius: .3rem;
+    --ref-gutter-sm: .5em;
+    --ref-gutter-md: 1em;
+    --ref-gutter-lg: 2em;
+    --ref-gutter: var(--ref-gutter-md);
+    --ref-input-padding: .5rem;
+    --ref-input-padding-sm: .5rem;
+    --ref-btn-padding: .5rem 1.5rem;
+    --ref-btn-border-radius: var(--ref-border-radius)
+}
+
+.ref-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: var(--ref-btn-padding);
+    background-color: var(--ref-primary);
+    color: var(--ref-white);
+    border-radius: var(--ref-btn-border-radius);
+    line-height: 1.5;
+    font-size: 1em;
+    cursor: pointer;
+    user-select: none
+}
+
+    .ref-button.inactive {
+        background-color: var(--ref-gray);
+        pointer-events: none
+    }
+
+    .ref-button:hover {
+        opacity: .92;
+        color: var(--ref-white)
+    }
+
+    .ref-button:active {
+        position: relative;
+        bottom: -1px
+    }
+
+    .ref-button.ref-button-success {
+        background-color: var(--ref-success)
+    }
+
+    .ref-button.inactive {
+        background-color: var(--ref-gray-300)
+    }
+
+
+#description {
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 250px;
+}

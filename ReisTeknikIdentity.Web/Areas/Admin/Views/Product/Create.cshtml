@@ -1,0 +1,103 @@
+﻿@model ReisTeknikIdentity.Web.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Shared/AdminLayout.cshtml";
+}
+
+<p class="display4">Ürün Ekle</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+
+                <textarea cols="10" rows="30" id="descCkEditor" class="form-control ckeditor" asp-for="Description"></textarea>
+               
+            
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label">
+
+                </label>
+                <input type="hidden" id="inputCategoryId" asp-for="CategoryId" />
+
+                <select onchange="getCategoryId()" asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+                    <option> Kategori Seç</option>
+         
+                </select>
+
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="State" /> @Html.DisplayNameFor(model => model.State)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-label"> Resim</label>
+                <input id="Files" type="file" class="form-control" asp-for="Files" multiple />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Ekle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts{
+
+    <script src="~/ckeditor5/ckeditor.min.js">
+
+    </script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#descCkEditor'))
+            .catch(error => {
+                console.error(error);
+            });
+
+            function getCategoryId(){
+
+            var ii = document.getElementById('CategoryId');
+            var categoryInput = document.getElementById('inputCategoryId');
+            categoryInput.value = ii.value;
+            }
+
+    </script>
+
+}

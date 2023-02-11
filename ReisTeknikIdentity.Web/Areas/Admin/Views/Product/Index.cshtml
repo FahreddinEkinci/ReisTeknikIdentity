@@ -1,0 +1,47 @@
+﻿@using System.Text
+@model List<ReisTeknikIdentity.Web.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Shared/AdminLayout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Yeni ürün ekle</a>
+</p>
+
+
+
+<div class="container overflow-y">
+
+
+
+    @foreach (var product in Model)
+    {
+
+
+        StringBuilder desc = new StringBuilder();
+        int indexOfBreakLine = product.Description.IndexOf("<br>");
+        String newStr = product.Description.Substring(0, indexOfBreakLine);
+        desc.Append(newStr);
+        desc.Append("</p>");
+
+        <div class="table row">
+
+            <div class="col-md-2">   <img class="rounded-circle" width="100% height=" 110px"" src="~/ProductImages/@product.Images.FirstOrDefault().Name"></div>
+            <div class="col-md-2">@product.Name</div>
+            <div class="col-md-3 overflow-auto">
+                @Html.Raw(desc)             
+            </div>
+            <div class="col-md-2">  @Html.DisplayFor(modelItem => product.Title)</div>
+            <div class="col-md-3 btn-group-sm">
+
+                <a class="btn btn-success btn-group-item" asp-action="Edit" asp-route-id="@product.Id">Düzenle</a>
+                <a class="btn btn-info btn-group-item" asp-action="Details" asp-route-id="@product.Id">Detay</a>
+                <a class="btn btn-danger btn-group-item" asp-action="Delete" asp-route-id="@product.Id">Sil</a>
+            </div>
+        </div>
+    }
+
+
+</div>

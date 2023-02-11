@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Details";
+}
+@model ProductDetailViewModel
+
+<section class="container my-5">
+    <div class="row">
+        <div class="col-md-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="#">@Model.CategoryName</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Name.Split(' ').FirstOrDefault()</li>
+                </ol>
+            </nav>
+            <div class="main-img">
+                <img class="img-fluid" src="~/ProductImages/@Model.ImageUrls.FirstOrDefault()" alt="ProductS">
+                <div class="row my-3 previews">
+                    @foreach (var img in Model.ImageUrls)
+                    {
+                        <div class="col-md-3">
+                            <img class="w-100" src="~/ProductImages/@img" alt="Sale">
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="main-description px-2">
+                <div class="category text-bold">
+                    Kategori :@Model.CategoryName
+                </div>
+                <div class="product-title text-bold my-3">
+                    @Model.Name
+                </div>
+
+
+                <div class="price-area my-4">
+                    <p class="old-price mb-1">
+                        <span class="old-price-discount text-danger">@Model.Price</span>
+                    </p>
+                </div>
+
+
+                <div class="buttons d-flex my-5">
+                    <div class="block">
+                        <a href="#" class="shadow btn custom-btn ">Takip Listesi</a>
+                    </div>
+                    <div class="block">
+                        <button class="shadow btn custom-btn">Sepete Ekle</button>
+                    </div>
+
+                    <div class="block quantity">
+                        <input type="number" class="form-control" id="cart_quantity" value="1" min="0" max="5" placeholder="Enter email" name="cart_quantity">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-details my-4">
+                <p class="details-title text-color mb-1">Ürün Detayları</p>
+                <p class="description">
+                    @Html.Raw(Model.Description)
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="container similar-products my-4">
+    <hr>
+    <p class="display-5">Benzer Ürünler</p>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="similar-product">
+                <img class="w-100" src="~/ProductImages/@Model.ImageUrls.FirstOrDefault()" alt="Preview">
+                <p class="title">@Model.Name</p>
+                <p class="price">@Model.Price</p>
+            </div>
+        </div>
+    </div>
+</div>

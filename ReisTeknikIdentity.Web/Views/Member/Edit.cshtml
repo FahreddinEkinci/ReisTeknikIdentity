@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Edit";
+}
+@model ChangePasswordViewModel
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-danger">
+                Şifrenizi değiştirmek üzeresiniz.
+            </div>
+            <div asp-validation-summary="ModelOnly"></div>
+            <form class="form" asp-area="" asp-controller="Member" asp-action="Edit">
+                <input class="d-none" type="hidden" asp-for="Id" />
+                <div class="mb-2">
+                    <input class="form-control" type="password" required="" placeholder="eski şifrenizi giriniz" asp-for="PasswordOld" />
+                    <span class="text-danger" asp-validation-for="PasswordOld"></span>
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" type="password" required="" placeholder="yeni şifrenizi giriniz" asp-for="NewPassword" />
+                    <span class="text-danger" asp-validation-for="NewPassword"></span>
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" type="password" required="" placeholder="yemi şifrenizi giriniz" asp-for="NewPasswordConfirm"/>
+                    <span class="text-danger" asp-validation-for="NewPasswordConfirm"></span>
+                </div>
+
+                <input type="submit" class="btn btn-danger w-100" />
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+    @await Html.PartialAsync("/Views/Shared/_ValidationScriptsPartial.cshtml")
+ }
